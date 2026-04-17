@@ -110,7 +110,7 @@
     }
 
     /* ─── Content Pages ──────────────────────── */
-    .content { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .content { max-width: 860px; margin: 0 auto; padding: 64px 44px; }
 
     /* ─── Section headers ────────────────────── */
     .guide-section { margin-bottom: 56px; }
@@ -336,6 +336,175 @@
       margin-left: 16px; transition: background 0.2s;
     }
     .print-bar button:hover { background: #B8841F; }
+
+    /* Print-only header element (hidden by default) */
+    .print-header { display: none; }
+
+    /* ─── Tablet (≤ 900px) ─────────────────────── */
+    @media (max-width: 900px) {
+      .content { padding: 52px 32px; }
+      .kit-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ─── Phone (≤ 600px) ──────────────────────── */
+    @media (max-width: 600px) {
+      .print-bar { font-size: 0.78rem; padding: 12px 14px; line-height: 1.5; }
+      .print-bar button { display: block; margin: 10px auto 0; }
+
+      .cover { padding: 48px 24px; }
+      .cover h1 { font-size: 2.05rem; }
+      .cover-sub { font-size: 0.92rem; }
+      .cover-logo { margin-bottom: 32px; }
+
+      .content { padding: 36px 20px; }
+
+      .guide-section { margin-bottom: 40px; }
+      .guide-section h2 { font-size: 1.45rem; }
+      .guide-section p { font-size: 0.9rem; }
+
+      .days-grid { grid-template-columns: 1fr; gap: 16px; }
+      .kit-grid { grid-template-columns: 1fr; gap: 12px; }
+      .signs-grid { grid-template-columns: 1fr; gap: 12px; }
+
+      .day-card { padding: 20px; }
+      .kit-item { padding: 16px; }
+
+      .supp-disclaimer { font-size: 0.78rem; padding: 12px 14px; }
+
+      .guide-footer {
+        padding: 24px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+      }
+    }
+
+    /* ─── Print (US Letter 8.5 × 11) ───────────── */
+    @page { size: letter; margin: 0.5in; }
+
+    @media print {
+      body {
+        background: #fff;
+        line-height: 1.5;
+        font-size: 11pt;
+        color: #1A3A38;
+      }
+      a { color: var(--teal-dark); text-decoration: none; }
+
+      /* Hide on-screen chrome; skip the heavy teal cover */
+      .cover { display: none !important; }
+      .print-bar { display: none !important; }
+      .cover-photo { display: none !important; }
+
+      /* Show the light print header instead */
+      .print-header {
+        display: block;
+        text-align: center;
+        border-bottom: 2pt solid var(--teal-dark);
+        padding-bottom: 10pt;
+        margin-bottom: 20pt;
+      }
+      .print-header .print-brand {
+        font-family: 'Georgia', serif;
+        font-size: 16pt;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        color: var(--teal-dark);
+      }
+      .print-header .print-tagline {
+        font-family: 'Arial', sans-serif;
+        font-size: 7.5pt;
+        letter-spacing: 0.14em;
+        color: var(--text-soft);
+        margin-top: 2pt;
+        text-transform: uppercase;
+      }
+      .print-header .print-title {
+        font-family: 'Georgia', serif;
+        font-size: 17pt;
+        font-weight: 400;
+        font-style: italic;
+        color: var(--text);
+        margin-top: 10pt;
+      }
+
+      /* Content fills printable area (letter margins set via @page) */
+      .content { max-width: 100%; padding: 0; margin: 0; }
+
+      /* Section typography tuned for print */
+      .guide-section { margin-bottom: 18pt; }
+      .guide-section h2 {
+        font-size: 15pt;
+        line-height: 1.25;
+        margin-bottom: 8pt;
+        padding-bottom: 6pt;
+        page-break-after: avoid;
+      }
+      .guide-section p { font-size: 10pt; line-height: 1.5; margin-bottom: 6pt; }
+      .section-eyebrow { font-size: 8pt; margin-bottom: 6pt; }
+
+      /* Keep small blocks together across page breaks */
+      .day-card, .kit-item, .supp-item, .sign-card,
+      .callout, .supp-section, .supp-disclaimer, .section-photo,
+      .tip-list li {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        box-shadow: none !important;
+      }
+
+      /* Photos — tighter on print */
+      .section-photo {
+        max-height: 2.2in;
+        border-radius: 6pt;
+        margin: 4pt auto 14pt;
+      }
+
+      /* Grids — stay 2-col; all fit comfortably inside 7.5" wide */
+      .days-grid { gap: 10pt; grid-template-columns: 1fr 1fr; margin-top: 10pt; }
+      .kit-grid { gap: 8pt; grid-template-columns: 1fr 1fr; margin-top: 10pt; }
+      .signs-grid { gap: 10pt; grid-template-columns: 1fr 1fr; margin-top: 10pt; }
+      .supp-grid { gap: 8pt; grid-template-columns: 1fr 1fr; }
+
+      .day-card, .kit-item { padding: 10pt; }
+      .supp-section { padding: 12pt; margin-top: 14pt; }
+      .day-label, .kit-item-name, .supp-item-name { font-size: 9pt; }
+      .day-title { font-size: 11pt; margin-bottom: 8pt; }
+      .day-list li { font-size: 9pt; padding: 3pt 0; line-height: 1.4; }
+      .kit-item-note, .supp-item-note { font-size: 8.5pt; line-height: 1.45; }
+      .kit-item-icon { font-size: 12pt; margin-bottom: 4pt; }
+
+      /* Tips list */
+      .tip-list li { padding: 8pt 0; font-size: 10pt; }
+      .tip-num { min-width: 18pt; height: 18pt; font-size: 8pt; }
+
+      /* Callouts */
+      .callout { padding: 10pt 14pt; margin: 12pt 0; }
+      .callout p { font-size: 9.5pt; }
+
+      /* Sign cards */
+      .sign-card { font-size: 9pt; padding: 10pt 12pt; }
+
+      /* Supplement disclaimer */
+      .supp-disclaimer { font-size: 9pt; padding: 10pt 12pt; margin-bottom: 12pt; }
+
+      /* Force a new page before the Kit Guide section */
+      .guide-section.page-break { page-break-before: always; }
+
+      /* Footer — quiet on print */
+      .guide-footer {
+        flex-direction: column;
+        align-items: center;
+        padding: 14pt 0 0;
+        background: #fff;
+        color: var(--text-soft);
+        border-top: 1px solid var(--border);
+        text-align: center;
+        margin-top: 18pt;
+        page-break-inside: avoid;
+      }
+      .guide-footer p { color: var(--text-soft); font-size: 8pt; text-align: center; }
+      .guide-footer .footer-brand { color: var(--teal-dark); font-size: 11pt; margin-bottom: 4pt; }
+    }
   </style>
 </head>
 <body>
@@ -380,6 +549,14 @@
 
 <!-- ─── CONTENT ────────────────────────────────────────── -->
 <div class="content">
+
+  <!-- Print-only header (hidden on screen) -->
+  <div class="print-header">
+    <div class="print-brand">RESTOVA</div>
+    <div class="print-tagline">Recovery Made Simple</div>
+    <div class="print-title">Your Recovery Guide</div>
+  </div>
+
 
   <!-- Welcome -->
   <div class="guide-section">
