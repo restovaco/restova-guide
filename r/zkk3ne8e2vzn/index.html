@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+  <meta name="googlebot" content="noindex, nofollow" />
+  <meta name="referrer" content="no-referrer" />
+  <title>Restova — Your Recovery Guide</title>
+  <style>
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .no-print { display: none; }
+      .page-break { page-break-before: always; }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Georgia', serif;
+      background: #F4FAF9;
+      color: #1A3A38;
+      line-height: 1.7;
+    }
+
+    :root {
+      --teal:       #5BBDB4;
+      --teal-dark:  #1E6B65;
+      --teal-light: #A8DED9;
+      --teal-bg:    #EBF8F6;
+      --gold:       #C9952A;
+      --gold-light: #F0D080;
+      --white:      #FFFFFF;
+      --text:       #1A3A38;
+      --text-soft:  #4A6E6B;
+      --border:     #C8E8E4;
+    }
+
+    /* ─── Cover Page ─────────────────────────── */
+    .cover {
+      min-height: 100vh;
+      background: linear-gradient(150deg, #1E6B65 0%, #2A7A72 50%, #5BBDB4 100%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 60px 40px;
+      position: relative; overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute; bottom: -120px; left: -120px;
+      width: 600px; height: 600px;
+      background: rgba(255,255,255,0.04); border-radius: 50%;
+    }
+    .cover::after {
+      content: '';
+      position: absolute; top: -80px; right: -80px;
+      width: 400px; height: 400px;
+      background: rgba(255,255,255,0.03); border-radius: 50%;
+    }
+    .cover-logo { margin-bottom: 48px; position: relative; z-index: 1; }
+    .cover-eyebrow {
+      display: inline-block;
+      font-family: 'Arial', sans-serif; font-size: 0.72rem;
+      letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600;
+      color: rgba(255,255,255,0.6); margin-bottom: 20px;
+    }
+    .cover h1 {
+      font-size: 3.2rem; font-weight: 400; color: #fff;
+      line-height: 1.15; margin-bottom: 16px;
+    }
+    .cover h1 em { font-style: italic; color: var(--gold-light); }
+    .cover-sub {
+      font-family: 'Arial', sans-serif; font-size: 1rem;
+      color: rgba(255,255,255,0.75); max-width: 480px;
+      line-height: 1.7; margin-bottom: 48px;
+    }
+    .cover-divider {
+      width: 60px; height: 2px;
+      background: linear-gradient(to right, var(--gold-light), transparent);
+      margin: 0 auto 36px;
+    }
+    .cover-disclaimer {
+      font-family: 'Arial', sans-serif; font-size: 0.72rem;
+      color: rgba(255,255,255,0.4); max-width: 400px;
+      line-height: 1.6; position: relative; z-index: 1;
+    }
+
+    /* ─── Photos ─────────────────────────────── */
+    .cover-photo {
+      display: block; width: 100%;
+      height: 420px; object-fit: cover; object-position: center;
+      margin: 0;
+    }
+    .section-photo {
+      display: block; width: 100%; height: auto;
+      border-radius: 16px;
+      margin: 4px auto 28px;
+      box-shadow: 0 8px 32px rgba(30, 107, 101, 0.10);
+      max-height: 420px; object-fit: cover; object-position: center;
+    }
+    @media (max-width: 600px) {
+      .cover-photo { height: 280px; }
+      .section-photo { max-height: 280px; border-radius: 12px; }
+    }
+    @media print {
+      .cover-photo { height: 300px; }
+      .section-photo {
+        page-break-inside: avoid;
+        max-height: 320px; box-shadow: none;
+      }
+    }
+
+    /* ─── Content Pages ──────────────────────── */
+    .content { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+
+    /* ─── Section headers ────────────────────── */
+    .guide-section { margin-bottom: 56px; }
+    .section-eyebrow {
+      font-family: 'Arial', sans-serif; font-size: 0.7rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--teal-dark); font-weight: 700; margin-bottom: 8px;
+    }
+    .guide-section h2 {
+      font-size: 1.9rem; font-weight: 400; color: var(--text);
+      line-height: 1.2; margin-bottom: 18px;
+      border-bottom: 2px solid var(--teal-bg); padding-bottom: 14px;
+    }
+    .guide-section h2 em { font-style: italic; color: var(--teal-dark); }
+    .guide-section p {
+      font-family: 'Arial', sans-serif; font-size: 0.92rem;
+      color: var(--text-soft); line-height: 1.75; margin-bottom: 14px;
+    }
+
+    /* ─── Day cards ──────────────────────────── */
+    .days-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 20px; margin-top: 24px;
+    }
+    .day-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 16px; padding: 24px;
+      position: relative; overflow: hidden;
+    }
+    .day-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(to right, var(--teal-dark), var(--teal));
+    }
+    .day-card.gold::before {
+      background: linear-gradient(to right, var(--gold), var(--gold-light));
+    }
+    .day-label {
+      font-family: 'Arial', sans-serif; font-size: 0.68rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      font-weight: 700; color: var(--teal-dark); margin-bottom: 4px;
+    }
+    .day-card.gold .day-label { color: var(--gold); }
+    .day-title {
+      font-size: 1.15rem; font-weight: 400; margin-bottom: 14px;
+      color: var(--text);
+    }
+    .day-list { list-style: none; }
+    .day-list li {
+      display: flex; gap: 10px; align-items: flex-start;
+      font-family: 'Arial', sans-serif; font-size: 0.84rem;
+      color: var(--text-soft); padding: 5px 0;
+      border-bottom: 1px solid var(--teal-bg);
+      line-height: 1.5;
+    }
+    .day-list li:last-child { border: none; }
+    .day-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--teal); flex-shrink: 0; margin-top: 6px;
+    }
+    .day-card.gold .day-dot { background: var(--gold); }
+
+    /* ─── Kit reference ──────────────────────── */
+    .kit-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 14px; margin-top: 20px;
+    }
+    .kit-item {
+      background: var(--teal-bg);
+      border: 1px solid var(--teal-light);
+      border-radius: 12px; padding: 14px 16px;
+    }
+    .kit-item-icon {
+      font-size: 1.2rem; margin-bottom: 8px;
+    }
+    .kit-item-name {
+      font-family: 'Arial', sans-serif; font-size: 0.8rem;
+      font-weight: 700; color: var(--teal-dark); margin-bottom: 4px;
+    }
+    .kit-item-note {
+      font-family: 'Arial', sans-serif; font-size: 0.72rem;
+      color: var(--text-soft); line-height: 1.5;
+    }
+
+    /* ─── Supplements section (gold-accented) ─── */
+    .supp-section {
+      margin-top: 40px; padding: 28px;
+      background: #FDF6E8;
+      border: 1.5px solid var(--gold-light);
+      border-radius: 16px;
+      position: relative; overflow: hidden;
+    }
+    .supp-section::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(to right, var(--gold), var(--gold-light));
+    }
+    .supp-section-eyebrow {
+      font-family: 'Arial', sans-serif; font-size: 0.7rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold); font-weight: 700; margin-bottom: 8px;
+    }
+    .supp-section h3 {
+      font-family: 'Georgia', serif; font-size: 1.4rem;
+      font-weight: 400; color: var(--text); margin-bottom: 14px;
+      line-height: 1.3;
+    }
+    .supp-disclaimer {
+      font-family: 'Arial', sans-serif; font-size: 0.82rem;
+      color: var(--text); line-height: 1.65; margin-bottom: 22px;
+      padding: 14px 18px; background: #fff;
+      border-left: 4px solid var(--gold);
+      border-radius: 0 10px 10px 0;
+    }
+    .supp-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .supp-item {
+      background: #fff;
+      border: 1px solid var(--gold-light);
+      border-radius: 10px; padding: 14px 16px;
+    }
+    .supp-item-name {
+      font-family: 'Arial', sans-serif; font-size: 0.82rem;
+      font-weight: 700; color: #8B6818; margin-bottom: 4px;
+    }
+    .supp-item-note {
+      font-family: 'Arial', sans-serif; font-size: 0.72rem;
+      color: var(--text-soft); line-height: 1.5;
+    }
+    @media (max-width: 600px) {
+      .supp-grid { grid-template-columns: 1fr; }
+      .supp-section { padding: 20px; }
+    }
+
+    /* ─── Alert / callout ────────────────────── */
+    .callout {
+      background: var(--teal-bg);
+      border-left: 4px solid var(--teal-dark);
+      border-radius: 0 12px 12px 0;
+      padding: 18px 22px; margin: 24px 0;
+    }
+    .callout.gold-call {
+      background: #FDF6E8;
+      border-left-color: var(--gold);
+    }
+    .callout.warn {
+      background: #FDF3F3;
+      border-left-color: #C05050;
+    }
+    .callout-label {
+      font-family: 'Arial', sans-serif; font-size: 0.7rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      font-weight: 700; margin-bottom: 6px;
+    }
+    .callout .callout-label { color: var(--teal-dark); }
+    .callout.gold-call .callout-label { color: var(--gold); }
+    .callout.warn .callout-label { color: #C05050; }
+    .callout p {
+      font-family: 'Arial', sans-serif; font-size: 0.86rem;
+      color: var(--text); line-height: 1.6; margin: 0;
+    }
+
+    /* ─── Tips list ──────────────────────────── */
+    .tip-list { list-style: none; margin-top: 16px; }
+    .tip-list li {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 12px 0; border-bottom: 1px solid var(--border);
+      font-family: 'Arial', sans-serif; font-size: 0.88rem;
+      color: var(--text-soft); line-height: 1.6;
+    }
+    .tip-list li:last-child { border: none; }
+    .tip-num {
+      min-width: 26px; height: 26px; border-radius: 50%;
+      background: var(--teal-dark); color: white;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; font-weight: 700; flex-shrink: 0;
+    }
+
+    /* ─── Warning signs table ────────────────── */
+    .signs-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 14px; margin-top: 18px;
+    }
+    .sign-card {
+      padding: 14px 16px;
+      border-radius: 10px;
+      font-family: 'Arial', sans-serif; font-size: 0.84rem;
+      line-height: 1.5;
+    }
+    .sign-card.normal { background: var(--teal-bg); border: 1px solid var(--teal-light); color: var(--teal-dark); }
+    .sign-card.concern { background: #FDF3F3; border: 1px solid #F0C0C0; color: #7A2020; }
+    .sign-card-label {
+      font-weight: 700; font-size: 0.7rem; letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 8px; display: block;
+    }
+
+    /* ─── Footer ─────────────────────────────── */
+    .guide-footer {
+      background: var(--text); color: rgba(255,255,255,0.5);
+      padding: 32px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .guide-footer p { font-family: 'Arial', sans-serif; font-size: 0.75rem; }
+    .guide-footer .footer-brand {
+      font-family: 'Georgia', serif; font-size: 0.95rem;
+      font-weight: 700; letter-spacing: 0.1em; color: white;
+    }
+
+    /* ─── Print button ───────────────────────── */
+    .print-bar {
+      background: var(--teal-dark); color: white;
+      text-align: center; padding: 14px;
+      font-family: 'Arial', sans-serif; font-size: 0.85rem;
+    }
+    .print-bar button {
+      background: var(--gold); color: white; border: none;
+      padding: 8px 24px; border-radius: 50px; cursor: pointer;
+      font-family: 'Arial', sans-serif; font-size: 0.85rem; font-weight: 600;
+      margin-left: 16px; transition: background 0.2s;
+    }
+    .print-bar button:hover { background: #B8841F; }
+  </style>
+</head>
+<body>
+
+<!-- Print bar -->
+<div class="print-bar no-print">
+  Your Restova Recovery Guide &nbsp;·&nbsp; Save or share this page for reference during your recovery
+  <button onclick="window.print()">Print Guide</button>
+</div>
+
+<!-- ─── COVER ──────────────────────────────────────────── -->
+<div class="cover">
+  <div class="cover-logo">
+    <svg width="64" height="56" viewBox="0 0 60 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(30,22)">
+        <line x1="0" y1="-14" x2="0" y2="-18" stroke="#C9952A" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="9.9" y1="-9.9" x2="12.7" y2="-12.7" stroke="#C9952A" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="14" y1="0" x2="18" y2="0" stroke="#C9952A" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="-9.9" y1="-9.9" x2="-12.7" y2="-12.7" stroke="#C9952A" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="-14" y1="0" x2="-18" y2="0" stroke="#C9952A" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M -10 0 A 10 10 0 0 1 10 0 Z" fill="#C9952A"/>
+      </g>
+      <path d="M6 32 C14 26, 22 38, 30 32 C38 26, 46 38, 54 32" stroke="rgba(255,255,255,0.9)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <path d="M2 40 C10 34, 20 46, 30 40 C40 34, 50 46, 58 40" stroke="rgba(255,255,255,0.4)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    </svg>
+    <div style="font-family:'Georgia',serif;font-size:1.4rem;font-weight:700;letter-spacing:0.14em;color:white;margin-top:10px;">RESTOVA</div>
+    <div style="font-family:'Arial',sans-serif;font-size:0.72rem;letter-spacing:0.12em;color:rgba(255,255,255,0.55);margin-top:4px;">RECOVERY MADE SIMPLE</div>
+  </div>
+  <div class="cover-eyebrow">Recovery Guide</div>
+  <h1>The First Days<br>of <em>Healing.</em></h1>
+  <p class="cover-sub">
+    Everything in this kit was chosen to support your comfort, calm, and recovery.
+    This guide walks you through what to expect — and how to use what's here.
+  </p>
+  <div class="cover-divider"></div>
+  <p class="cover-disclaimer">
+    This guide is for general comfort and informational purposes only. It is not a substitute
+    for medical advice. Always follow your surgeon's post-operative instructions and
+    contact your provider with any clinical concerns.
+  </p>
+</div>
+
+<!-- ─── CONTENT ────────────────────────────────────────── -->
+<div class="content">
+
+  <!-- Welcome -->
+  <div class="guide-section">
+    <img src="guide-assets/opening-bed.jpg"
+         alt="A softly lit bedroom — cream pillows, mauve duvet, a small cup on a tray and delicate branches on the nightstand"
+         class="section-photo" />
+    <div class="section-eyebrow">A Note From Restova</div>
+    <h2>You made it through the <em>hard part.</em></h2>
+    <p>
+      Surgery is behind you. What comes next — the first days of healing — can feel uncertain.
+      You may not know exactly what to expect, what's normal, or what will help.
+    </p>
+    <p>
+      That's exactly why this kit exists. Everything in it is here for a reason. This guide is
+      here to walk alongside you — day by day — so recovery feels a little less overwhelming and
+      a little more supported.
+    </p>
+    <div class="callout gold-call">
+      <div class="callout-label">Always remember</div>
+      <p>Your surgeon's instructions come first. This guide is a comfort companion — not a replacement
+      for your clinical care team. When in doubt, call your provider.</p>
+    </div>
+  </div>
+
+  <!-- Day by Day -->
+  <div class="guide-section">
+    <div class="section-eyebrow">Your Recovery Timeline</div>
+    <h2>What to expect, <em>day by day.</em></h2>
+    <p>Every recovery is different. What's described below represents common experiences — your own timeline may vary. Use this as a general frame of reference, not a strict schedule.</p>
+
+    <div class="days-grid">
+
+      <div class="day-card">
+        <div class="day-label">Day of Surgery</div>
+        <div class="day-title">Rest. Nothing more.</div>
+        <ul class="day-list">
+          <li><span class="day-dot"></span>Rest as much as possible — your body is working hard</li>
+          <li><span class="day-dot"></span>Apply your Cold Therapy Jaw Wrap as directed by your surgeon</li>
+          <li><span class="day-dot"></span>Keep your head elevated — even when resting</li>
+          <li><span class="day-dot"></span>Sip water and clear fluids — stay hydrated</li>
+          <li><span class="day-dot"></span>Use gauze as directed and change as needed</li>
+          <li><span class="day-dot"></span>Avoid any physical activity</li>
+        </ul>
+      </div>
+
+      <div class="day-card">
+        <div class="day-label">Day 1 — 24 Hours After</div>
+        <div class="day-title">Swelling peaks. That's expected.</div>
+        <ul class="day-list">
+          <li><span class="day-dot"></span>Swelling often peaks on day 1–2 — this is normal</li>
+          <li><span class="day-dot"></span>Continue cold therapy in cycles as your surgeon advised</li>
+          <li><span class="day-dot"></span>Begin electrolyte packets to stay replenished</li>
+          <li><span class="day-dot"></span>Sip calming herbal tea — warm, not hot</li>
+          <li><span class="day-dot"></span>Apply arnica recovery gel gently to outer jaw area</li>
+          <li><span class="day-dot"></span>Keep lips moisturized with your medicated lip balm</li>
+        </ul>
+      </div>
+
+      <div class="day-card">
+        <div class="day-label">Days 2 – 3</div>
+        <div class="day-title">Discomfort begins to ease.</div>
+        <ul class="day-list">
+          <li><span class="day-dot"></span>Swelling should begin to slowly reduce</li>
+          <li><span class="day-dot"></span>Begin gentle oral rinsing with your salt water healing rinse</li>
+          <li><span class="day-dot"></span>Use the oral rinse syringe carefully to keep the area clean</li>
+          <li><span class="day-dot"></span>Continue soft foods and fluids — no chewing</li>
+          <li><span class="day-dot"></span>If your care team has cleared Arnica pellets, use as directed on the packaging</li>
+          <li><span class="day-dot"></span>Rest as needed — fatigue during this phase is common</li>
+        </ul>
+      </div>
+
+      <div class="day-card gold">
+        <div class="day-label">Days 4 – 7</div>
+        <div class="day-title">Turning the corner.</div>
+        <ul class="day-list">
+          <li><span class="day-dot"></span>Most patients notice meaningful improvement this week</li>
+          <li><span class="day-dot"></span>Continue rinsing consistently after meals</li>
+          <li><span class="day-dot"></span>Continue any supplements your care team has cleared — see the supplements section below</li>
+          <li><span class="day-dot"></span>Soft foods can gradually broaden — follow your surgeon's guidance</li>
+          <li><span class="day-dot"></span>Light activity may resume if your surgeon approves</li>
+          <li><span class="day-dot"></span>Attend your follow-up appointment as scheduled</li>
+        </ul>
+      </div>
+
+    </div><!-- /days-grid -->
+  </div>
+
+  <!-- Kit Guide -->
+  <div class="guide-section page-break">
+    <div class="section-eyebrow">Your Kit</div>
+    <h2>What's inside &amp; <em>how to use it.</em></h2>
+    <p>Here's a simple reference for when and how to use each item in your kit.</p>
+
+    <img src="guide-assets/detail-mug.jpg"
+         alt="Hands cradling a cream mug on a chunky gray knit blanket — the small comfort of something warm to hold"
+         class="section-photo" />
+
+    <div class="kit-grid">
+      <div class="kit-item">
+        <div class="kit-item-icon">🧊</div>
+        <div class="kit-item-name">Cold Therapy Jaw Wrap</div>
+        <div class="kit-item-note">Apply to jaw and cheeks in 20-minute cycles during the first 48 hours. Do not apply directly to skin — use a thin cloth layer.</div>
+      </div>
+      <div class="kit-item">
+        <div class="kit-item-icon">🌿</div>
+        <div class="kit-item-name">Arnica Recovery Gel</div>
+        <div class="kit-item-note">Apply gently to the outer jaw and cheek area. Avoid open wounds or incisions. A comfort support for the outer tissue.</div>
+      </div>
+      <div class="kit-item">
+        <div class="kit-item-icon">🩹</div>
+        <div class="kit-item-name">Wound Care Gauze</div>
+        <div class="kit-item-note">Use as directed by your surgeon to manage the surgical site. Fold and place gently — avoid excessive pressure.</div>
+      </div>
+      <div class="kit-item">
+        <div class="kit-item-icon">💉</div>
+        <div class="kit-item-name">Oral Rinse Syringes</div>
+        <div class="kit-item-note">Begin gentle irrigation as directed by your surgeon — typically starting day 3–5. Use with warm salt water or healing rinse.</div>
+      </div>
+      <div class="kit-item">
+        <div class="kit-item-icon">🧴</div>
+        <div class="kit-item-name">Salt Water Healing Rinse</div>
+        <div class="kit-item-note">A gentle, alcohol-free rinse. Swish softly — no forceful rinsing — to keep the mouth clean without disturbing the healing site.</div>
+      </div>
+      <div class="kit-item">
+        <div class="kit-item-icon">🫧</div>
+        <div class="kit-item-name">Recovery Washcloths</div>
+        <div class="kit-item-note">Use warm or cool as needed for facial comfort. Gentle cleansing around the mouth area when brushing is limited.</div>
+      </div>
+      <div class="kit-item">
+        <div class="kit-item-icon">💋</div>
+        <div class="kit-item-name">Medicated Lip Balm</div>
+        <div class="kit-item-note">Mouth breathing during recovery causes dry, cracked lips. Apply frequently. A small comfort that makes a real difference.</div>
+      </div>
+      <div class="kit-item">
+        <div class="kit-item-icon">⚡</div>
+        <div class="kit-item-name">Electrolyte Packets</div>
+        <div class="kit-item-note">Mix with water and sip regularly. Staying hydrated and replenishing electrolytes supports your overall recovery.</div>
+      </div>
+      <div class="kit-item">
+        <div class="kit-item-icon">🍵</div>
+        <div class="kit-item-name">Calming Herbal Tea</div>
+        <div class="kit-item-note">Warm (not hot) herbal tea soothes and calms. Chamomile and similar blends are gentle on the digestive system during recovery.</div>
+      </div>
+      <div class="kit-item">
+        <div class="kit-item-icon">🧦</div>
+        <div class="kit-item-name">Recovery Comfort Socks</div>
+        <div class="kit-item-note">Warmth and comfort during rest days. A small thing that signals to your body: it's time to relax and heal.</div>
+      </div>
+    </div>
+
+    <!-- Supplements — intentionally separated with bulletproof disclaimer -->
+    <div class="supp-section">
+      <div class="supp-section-eyebrow">Supplements Included in Your Kit</div>
+      <h3>A note before you take anything.</h3>
+      <p class="supp-disclaimer">
+        The supplements included in your Restova kit are commercially available consumer products.
+        They are <strong>not prescribed, recommended, or endorsed by Restova</strong> for any medical purpose.
+        Restova does not provide medical advice. Before taking any supplement — especially before, during,
+        or after surgery — you must consult your surgeon, physician, anesthesiologist, or pharmacist.
+        Some supplements may interact with anesthesia, prescription medications, or your medical conditions.
+        Do not consume any supplement in this kit without first confirming with your care team that it is
+        appropriate for you. By using any supplement in the kit, you acknowledge that you do so
+        <strong>at your own discretion and risk</strong>.
+      </p>
+
+      <div class="supp-grid">
+        <div class="supp-item">
+          <div class="supp-item-name">Arnica Montana Pellets</div>
+          <div class="supp-item-note">A homeopathic product. Follow the directions printed on the packaging. Do not use without consulting your care team.</div>
+        </div>
+        <div class="supp-item">
+          <div class="supp-item-name">Beta Carotene</div>
+          <div class="supp-item-note">A general wellness supplement. Follow the directions printed on the label. Do not use without consulting your care team.</div>
+        </div>
+        <div class="supp-item">
+          <div class="supp-item-name">Bromelain</div>
+          <div class="supp-item-note">A general wellness supplement (included in Comfort Complete). Follow the directions printed on the label. Do not use without consulting your care team.</div>
+        </div>
+        <div class="supp-item">
+          <div class="supp-item-name">CoQ10</div>
+          <div class="supp-item-note">A general wellness supplement (included in Comfort Complete). Follow the directions printed on the label. Do not use without consulting your care team.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comfort tips -->
+  <div class="guide-section">
+    <div class="section-eyebrow">Recovery Tips</div>
+    <h2>Small things that <em>help more than you'd expect.</em></h2>
+
+    <ul class="tip-list">
+      <li>
+        <div class="tip-num">1</div>
+        <div><strong style="color:var(--text);">Keep your head elevated.</strong> Even while sleeping, propping your head up reduces swelling and pressure. Use an extra pillow or a wedge.</div>
+      </li>
+      <li>
+        <div class="tip-num">2</div>
+        <div><strong style="color:var(--text);">Hydrate consistently.</strong> Sip water regularly, even when you don't feel thirsty. Your electrolyte packets help replenish what your body needs.</div>
+      </li>
+      <li>
+        <div class="tip-num">3</div>
+        <div><strong style="color:var(--text);">Eat soft, cool foods.</strong> Think yogurt, smoothies, applesauce, broth, and soft scrambled eggs. Avoid anything hot, crunchy, or that requires chewing.</div>
+      </li>
+      <li>
+        <div class="tip-num">4</div>
+        <div><strong style="color:var(--text);">Rinse gently — not forcefully.</strong> When you begin rinsing, swish with minimal pressure. Forceful rinsing can dislodge the healing tissue.</div>
+      </li>
+      <li>
+        <div class="tip-num">5</div>
+        <div><strong style="color:var(--text);">Let yourself rest.</strong> Fatigue after surgery is completely normal. Your body is working hard beneath the surface. Sleep and downtime are productive.</div>
+      </li>
+      <li>
+        <div class="tip-num">6</div>
+        <div><strong style="color:var(--text);">Keep lips moisturized.</strong> Dry lips are one of the most overlooked discomforts during recovery. Your medicated lip balm is there for a reason — use it often.</div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- When to call -->
+  <div class="guide-section">
+    <div class="section-eyebrow">Know the Difference</div>
+    <h2>Normal recovery vs. <em>when to call your surgeon.</em></h2>
+    <p>Some discomfort is expected. Knowing what's typical — and what's a signal to call your provider — gives you confidence during recovery.</p>
+
+    <div class="signs-grid">
+      <div class="sign-card normal">
+        <span class="sign-card-label">✓ Generally Normal</span>
+        Swelling that peaks around day 1–2 then gradually reduces<br><br>
+        Mild to moderate soreness managed with medication<br><br>
+        Some bruising on the jaw or cheeks<br><br>
+        Slight oozing for the first 24 hours<br><br>
+        Fatigue and low energy for the first few days<br><br>
+        Difficulty opening your mouth wide initially
+      </div>
+      <div class="sign-card concern">
+        <span class="sign-card-label">⚠ Contact Your Surgeon If You Notice</span>
+        Heavy or uncontrolled bleeding that does not slow<br><br>
+        Fever above 101°F (38.3°C)<br><br>
+        Severe or worsening pain after day 3<br><br>
+        Pus, unusual discharge, or strong odor from the site<br><br>
+        Numbness or tingling that develops after surgery<br><br>
+        Difficulty swallowing or breathing
+      </div>
+    </div>
+
+    <div class="callout warn" style="margin-top:20px;">
+      <div class="callout-label">Important</div>
+      <p>If you experience anything that concerns you — trust your instincts and call your provider. This guide is a general comfort reference only. Your surgeon knows your specific procedure and is your primary point of contact for clinical questions.</p>
+    </div>
+  </div>
+
+  <!-- Closing -->
+  <div class="guide-section">
+    <div class="section-eyebrow">From Restova</div>
+    <h2>You are not alone in <em>this.</em></h2>
+    <p>
+      Recovery is rarely talked about. Patients are given instructions, sent home, and left to figure out
+      the rest. Restova was built to change that — to make sure that the first days after surgery
+      feel a little less uncertain and a little more supported.
+    </p>
+    <p>
+      Everything in this kit, and everything in this guide, was chosen with you in mind.
+      Heal well. We're rooting for you.
+    </p>
+    <p>
+      Questions, feedback, or a recovery story to share — email us at
+      <a href="mailto:restova@restova.co" style="color:var(--teal-dark);text-decoration:none;border-bottom:1px solid var(--teal-light);">restova@restova.co</a>.
+      We read every message.
+    </p>
+    <div style="margin-top:32px;display:flex;align-items:center;gap:14px;">
+      <svg width="36" height="32" viewBox="0 0 60 52" fill="none">
+        <g transform="translate(30,22)">
+          <line x1="0" y1="-14" x2="0" y2="-18" stroke="#C9952A" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="9.9" y1="-9.9" x2="12.7" y2="-12.7" stroke="#C9952A" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="14" y1="0" x2="18" y2="0" stroke="#C9952A" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="-9.9" y1="-9.9" x2="-12.7" y2="-12.7" stroke="#C9952A" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="-14" y1="0" x2="-18" y2="0" stroke="#C9952A" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M -10 0 A 10 10 0 0 1 10 0 Z" fill="#C9952A"/>
+        </g>
+        <path d="M6 32 C14 26, 22 38, 30 32 C38 26, 46 38, 54 32" stroke="#1E6B65" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <div style="font-family:'Georgia',serif;font-size:1rem;font-weight:700;letter-spacing:0.1em;color:var(--teal-dark);">RESTOVA</div>
+        <div style="font-family:'Arial',sans-serif;font-size:0.72rem;color:var(--text-soft);letter-spacing:0.08em;">Recovery Made Simple</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /content -->
+
+<!-- Footer -->
+<div class="guide-footer">
+  <span class="footer-brand">RESTOVA</span>
+  <p>This guide is for general comfort support only and does not constitute medical advice. Always follow your surgeon's post-operative instructions.</p>
+  <p>© 2026 Restova. All rights reserved.</p>
+</div>
+
+</body>
+</html>
