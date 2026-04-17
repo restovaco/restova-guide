@@ -432,7 +432,11 @@
       .content { max-width: 100%; padding: 0; margin: 0; }
 
       /* Section typography tuned for print */
-      .guide-section { margin-bottom: 18pt; }
+      .guide-section {
+        margin-bottom: 18pt;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
       .guide-section h2 {
         font-size: 15pt;
         line-height: 1.25;
@@ -452,11 +456,17 @@
         box-shadow: none !important;
       }
 
-      /* Photos — tighter on print */
+      /* Photos — natural aspect ratio, no crop */
       .section-photo {
-        max-height: 2.2in;
+        display: block;
+        width: 100%;
+        max-width: 4.5in;
+        height: auto;
+        max-height: none;
+        object-fit: unset;
         border-radius: 6pt;
-        margin: 4pt auto 14pt;
+        box-shadow: none !important;
+        margin: 6pt auto 12pt;
       }
 
       /* Grids — stay 2-col; all fit comfortably inside 7.5" wide */
@@ -530,7 +540,7 @@
       <path d="M6 32 C14 26, 22 38, 30 32 C38 26, 46 38, 54 32" stroke="rgba(255,255,255,0.9)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
       <path d="M2 40 C10 34, 20 46, 30 40 C40 34, 50 46, 58 40" stroke="rgba(255,255,255,0.4)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
     </svg>
-    <div style="font-family:'Georgia',serif;font-size:1.4rem;font-weight:700;letter-spacing:0.14em;color:white;margin-top:10px;">RESTOVA</div>
+    <div style="font-family:'Georgia',serif;font-size:1.4rem;font-weight:700;letter-spacing:0.14em;color:white;margin-top:10px;">REST<span style="color:#F0D080;">O</span>VA</div>
     <div style="font-family:'Arial',sans-serif;font-size:0.72rem;letter-spacing:0.12em;color:rgba(255,255,255,0.55);margin-top:4px;">RECOVERY MADE SIMPLE</div>
   </div>
   <div class="cover-eyebrow">Recovery Guide</div>
@@ -552,7 +562,7 @@
 
   <!-- Print-only header (hidden on screen) -->
   <div class="print-header">
-    <div class="print-brand">RESTOVA</div>
+    <div class="print-brand">REST<span style="color:#C9952A;">O</span>VA</div>
     <div class="print-tagline">Recovery Made Simple</div>
     <div class="print-title">Your Recovery Guide</div>
   </div>
@@ -840,7 +850,7 @@
         <path d="M6 32 C14 26, 22 38, 30 32 C38 26, 46 38, 54 32" stroke="#1E6B65" stroke-width="3.5" fill="none" stroke-linecap="round"/>
       </svg>
       <div>
-        <div style="font-family:'Georgia',serif;font-size:1rem;font-weight:700;letter-spacing:0.1em;color:var(--teal-dark);">RESTOVA</div>
+        <div style="font-family:'Georgia',serif;font-size:1rem;font-weight:700;letter-spacing:0.1em;color:var(--teal-dark);">REST<span style="color:#C9952A;">O</span>VA</div>
         <div style="font-family:'Arial',sans-serif;font-size:0.72rem;color:var(--text-soft);letter-spacing:0.08em;">Recovery Made Simple</div>
       </div>
     </div>
@@ -850,7 +860,7 @@
 
 <!-- Footer -->
 <div class="guide-footer">
-  <span class="footer-brand">RESTOVA</span>
+  <span class="footer-brand">REST<span style="color:#F0D080;">O</span>VA</span>
   <p>This guide is for general comfort support only and does not constitute medical advice. Always follow your surgeon's post-operative instructions.</p>
   <p>© 2026 Restova. All rights reserved.</p>
 </div>
